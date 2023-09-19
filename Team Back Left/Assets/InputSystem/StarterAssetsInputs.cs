@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool interact;
+		public bool changePerspective;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -49,6 +50,11 @@ namespace StarterAssets
 		{
 			InteractInput(value.isPressed);
 		}
+
+		public void OnChangePerspective(InputValue value)
+		{
+			ChangePerspectiveInput(value.isPressed);
+		}
 #endif
 
 
@@ -75,7 +81,11 @@ namespace StarterAssets
 		private void InteractInput(bool newInteractState)
 		{
 			interact = newInteractState;
-			Debug.Log("Interact Input");
+		}
+		
+		private void ChangePerspectiveInput(bool newPerspectiveState)
+		{
+			changePerspective = newPerspectiveState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)
