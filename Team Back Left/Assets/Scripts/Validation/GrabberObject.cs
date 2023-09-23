@@ -9,9 +9,12 @@ public class GrabberObject : MonoBehaviour
     private Rigidbody objectRigidbody;
     public Text scoreText;
 
+    
+
     public void Start()
     {
-        scoreText.text = "Score: " + ScoreManager.score;
+       
+        scoreText.text = "Items: " + ScoreManager.score+"/4";
     }
 
     private void Update()
@@ -26,6 +29,7 @@ public class GrabberObject : MonoBehaviour
         {
             GrabObject(other.gameObject);
         }
+
     }
 
    
@@ -36,8 +40,8 @@ public class GrabberObject : MonoBehaviour
         // Disable the object's physics so that it doesn't fall or react to forces.
         objectRigidbody.isKinematic = true;
         grabbedObject.SetActive(false);
-        ScoreManager.IncreaseScore(100);
-        scoreText.text = "Score: " + ScoreManager.score;
+        ScoreManager.IncreaseScore(1);
+        scoreText.text = "Items: " + ScoreManager.score+"/4";
       
     }
 

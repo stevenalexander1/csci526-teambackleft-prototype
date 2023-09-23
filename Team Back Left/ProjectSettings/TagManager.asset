@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Grabbable
+  - FinishLine
   layers:
   - Default
   - TransparentFX
