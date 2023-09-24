@@ -11,19 +11,18 @@ public class NewLaserScript : MonoBehaviour
     private Transform startPoint;
     [SerializeField]
     private float moveSpeed = 2.0f; // Adjust this to control the speed of movement
-
+    [SerializeField]
+    private GameManager gameManager;
     private float maxY = 3.0f; // Adjust this to set the maximum height
     private float minY = 1.0f; // Adjust this to set the minimum height
     private bool movingUp = true;
 
     private bool isGameOver = false; // Track game over state
-
-    public Text gameOverText; // Reference to the "GAME OVER" text element
-
+    
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-        gameOverText.enabled = false; // Disable the "GAME OVER" text at the start.
+        isGameOver = false;
     }
 
     void Update()
@@ -66,7 +65,8 @@ public class NewLaserScript : MonoBehaviour
             }
             if (hit.transform.CompareTag("Player"))
             {
-                GameOver(); // Call the GameOver function when the player is hit.
+                gameManager.GameOver(); // Call the GameOver function when the player is hit.
+                isGameOver = true; // Set the game over state to true.
             }
         }
         else
@@ -75,11 +75,5 @@ public class NewLaserScript : MonoBehaviour
         }
     }
 
-    void GameOver()
-    {
-        isGameOver = true;
-        // Display the "GAME OVER" text
-        gameOverText.enabled = true;
-        // You can also add other game over logic here, like pausing the game or showing a restart button.
-    }
+    
 }

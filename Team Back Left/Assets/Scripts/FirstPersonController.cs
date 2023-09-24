@@ -66,6 +66,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
+		public bool gameOver = false;
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
@@ -114,10 +115,13 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			JumpAndGravity();
-			GroundedCheck();
-			Move();
-			ChangePerspective();
+			if (!gameOver)
+			{
+				JumpAndGravity();
+				GroundedCheck();
+				Move();
+				ChangePerspective();
+			}
 		}
 
 		private void LateUpdate()
@@ -277,22 +281,25 @@ namespace StarterAssets
 		{
 			if (_input.changePerspective)
 			{
+				int laserLayer = LayerMask.NameToLayer("Laser");
+				var mainCameraComponent = _mainCamera.GetComponent<Camera>();
 				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
 				if (!cameraManager.PlayerCameraActive)
 				{
 					cameraManager.ActivateCameraByName("PlayerFollowCamera");
+					mainCameraComponent.cullingMask &= ~(1 << laserLayer);
 				}
 				else
 				{
 					GameObject cameraPlayerLookingAt = GetCameraPlayerLookingAt();
 					if (cameraPlayerLookingAt != null)
 					{
-						Debug.Log("camera player looking at: " + cameraPlayerLookingAt.name + "");
 						SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponent<SecurityCameraComponent>();
 						if (securityCameraComponent != null)
 						{
-							Debug.Log("security camera component found");
 							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
+							 
+							 mainCameraComponent.cullingMask |= 1 << laserLayer;
 						}
 					}
 				}

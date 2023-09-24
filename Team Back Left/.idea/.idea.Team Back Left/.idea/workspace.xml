@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92353fdc-4e7f-4c96-83f0-a8a08cadb6e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team Back Left/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team Back Left/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/StarterAssets.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/StarterAssets.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/StarterAssetsInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/StarterAssetsInputs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Steven.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Steven.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Team Back Left/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Team Back Left/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Money/MoneyBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Money/MoneyBox.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Teju Sample.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Teju Sample.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Steven_TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test Scene/Steven_TestScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FirstPersonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FirstPersonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NewLaserScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NewLaserScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Validation/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Validation/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/91dc399f41a440558c716315c7e834ab15aa00/91/cd89e20d/CursorLockMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/ColorObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/Pattern.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/Shape.cs" root0="FORCE_HIGHLIGHTING" />
@@ -97,6 +101,7 @@
       <updated>1694805259383</updated>
       <workItem from="1694805261810" duration="1343000" />
       <workItem from="1695165769784" duration="342000" />
+      <workItem from="1695576745887" duration="4117000" />
     </task>
     <servers />
   </component>
