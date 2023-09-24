@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewLaserScript : MonoBehaviour
 {
     private LineRenderer lr;
-
-    private GameManagerer gameManager;
 
     [SerializeField]
     private Transform startPoint;
@@ -16,19 +15,24 @@ public class NewLaserScript : MonoBehaviour
     private float maxY = 3.0f; // Adjust this to set the maximum height
     private float minY = 1.0f; // Adjust this to set the minimum height
     private bool movingUp = true;
-    private bool gameOver = false;
 
+    private bool isGameOver = false; // Track game over state
 
- void Start()
+    public Text gameOverText; // Reference to the "GAME OVER" text element
+
+    void Start()
     {
         lr = GetComponent<LineRenderer>();
-        gameManager = FindObjectOfType<GameManagerer>(); // Find the GameManager in the scene
+        gameOverText.enabled = false; // Disable the "GAME OVER" text at the start.
     }
 
     void Update()
     {
-        if (!gameOver)
-        {    
+        if (isGameOver)
+        {
+            return; // Don't update anything if the game is over.
+        }
+
         // Move the startPoint up and down
         Vector3 newPosition = startPoint.position;
         if (movingUp)
@@ -54,24 +58,28 @@ public class NewLaserScript : MonoBehaviour
         // Update the laser position
         lr.SetPosition(0, startPoint.position);
         RaycastHit hit;
-            if (Physics.Raycast(transform.position, -Vector3.back, out hit))
+        if (Physics.Raycast(transform.position, -Vector3.back, out hit))
+        {
+            if (hit.collider)
             {
-                if (hit.collider)
-                {
-                    lr.SetPosition(1, hit.point);
-
-                    if (hit.transform.CompareTag("Player"))
-                    {
-                        gameOver = true;
-                        gameManager.GameOver(); // Call the GameManager's GameOver method
-                    }
-                }
+                lr.SetPosition(1, hit.point);
             }
-            else
+            if (hit.transform.CompareTag("Player"))
             {
-                lr.SetPosition(1, -Vector3.back * 5000);
+                GameOver(); // Call the GameOver function when the player is hit.
             }
         }
+        else
+        {
+            lr.SetPosition(1, -Vector3.back * 5000);
+        }
+    }
+
+    void GameOver()
+    {
+        isGameOver = true;
+        // Display the "GAME OVER" text
+        gameOverText.enabled = true;
+        // You can also add other game over logic here, like pausing the game or showing a restart button.
     }
 }
-
