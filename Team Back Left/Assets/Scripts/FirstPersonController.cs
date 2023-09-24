@@ -51,6 +51,8 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		[Header("Camera Look At")] [SerializeField]
+		private LayerMask ignoreLayer;
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -115,6 +117,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			ChangePerspective();
 		}
 
 		private void LateUpdate()
@@ -268,6 +271,44 @@ namespace StarterAssets
 		private void OnInteract()
 		{
 			
+		}
+		
+		private void ChangePerspective()
+		{
+			if (_input.changePerspective)
+			{
+				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+				if (!cameraManager.PlayerCameraActive)
+				{
+					cameraManager.ActivateCameraByName("PlayerFollowCamera");
+				}
+				else
+				{
+					GameObject cameraPlayerLookingAt = GetCameraPlayerLookingAt();
+					if (cameraPlayerLookingAt != null)
+					{
+						Debug.Log("camera player looking at: " + cameraPlayerLookingAt.name + "");
+						SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponent<SecurityCameraComponent>();
+						if (securityCameraComponent != null)
+						{
+							Debug.Log("security camera component found");
+							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
+						}
+					}
+				}
+				_input.changePerspective = false;
+			}
+		}
+
+		private GameObject GetCameraPlayerLookingAt()
+		{
+			RaycastHit hit;
+			if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100, ignoreLayer))
+			{
+				GameObject lookedAtObject = hit.collider.gameObject;
+				return lookedAtObject;
+			}
+			return null;
 		}
 	}
 }
